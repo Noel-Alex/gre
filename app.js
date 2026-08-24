@@ -1676,12 +1676,20 @@ function initSearch(){
  $('#searchTrigger').onclick=openSearch;$('#searchTriggerMobile').onclick=openSearch;$('#globalSearch').oninput=e=>renderSearch(e.target.value);$$('[data-close-modal]').forEach(x=>x.onclick=closeSearch);
 }
 function initChrome(){
- $$('.brand,[data-route]').forEach(el=>el.addEventListener('click',()=>{if(el.dataset.route)routeTo(el.dataset.route)}));
+ // Single delegated handler covers EVERY [data-route] element — static chrome and
+ // dynamically rendered pages alike — so navigation can never be lost to re-rendering.
+ document.addEventListener('click',e=>{
+   const routeEl=e.target.closest('[data-route]');
+   if(routeEl&&routeEl.dataset.route) routeTo(routeEl.dataset.route);
+ });
  $('#themeBtn').onclick=()=>{state.settings=state.settings||{};state.settings.night=!state.settings.night;saveState();updateChrome()};
  const closeSidebar=()=>{$('#sidebar').classList.remove('open');$('#sidebarBackdrop').hidden=true};
  $('#mobileNavBtn').onclick=()=>{const open=$('#sidebar').classList.toggle('open');$('#sidebarBackdrop').hidden=!open};
  $('#sidebarBackdrop').onclick=closeSidebar;
- document.addEventListener('click',e=>{const routeEl=e.target.closest('[data-route]');if(routeEl)closeSidebar()});
+ document.addEventListener('click',e=>{
+   const routeEl=e.target.closest('[data-route]');
+   if(routeEl){$('#sidebar').classList.remove('open');$('#sidebarBackdrop').hidden=true}
+ });
  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSidebar()});
 }
 function markStudyDay(){
