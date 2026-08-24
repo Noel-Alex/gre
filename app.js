@@ -1,6 +1,23 @@
 const $ = (s, el=document) => el.querySelector(s);
 const $$ = (s, el=document) => [...el.querySelectorAll(s)];
 const STORAGE_KEY = 'gre-atlas-state-v1';
+// Storage can throw in private browsing, when cookies/site data are blocked, or when
+// quota is exhausted. Never let that kill the app: fall back to in-memory storage.
+const safeStorage = (() => {
+  let mem = null, usable = null;
+  const probe = () => {
+    if (usable !== null) return usable;
+    try { const t='__gre_probe__'; localStorage.setItem(t,'1'); localStorage.removeItem(t); usable = true; }
+    catch(e){ usable = false; }
+    return usable;
+  };
+  return {
+    get(){ if(!probe()) return mem; try{ return localStorage.getItem(STORAGE_KEY); }catch(e){ return mem; } },
+    set(v){ mem = v; if(!probe()) return; try{ localStorage.setItem(STORAGE_KEY,v); }catch(e){} },
+    del(){ mem = null; if(!probe()) return; try{ localStorage.removeItem(STORAGE_KEY); }catch(e){} },
+    persistent(){ return probe(); }
+  };
+})();
 const pad2 = n => String(n).padStart(2,'0');
 const todayISO = () => { const x=new Date(); return `${x.getFullYear()}-${pad2(x.getMonth()+1)}-${pad2(x.getDate())}`; };
 const addDays = (d,n) => { const x=new Date(d); x.setDate(x.getDate()+n); return x; };
@@ -28,8 +45,20 @@ function migrateState(s){
   return s;
 }
 let state = migrateState(loadState());
-function loadState(){ try{return {...defaultState,...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}}catch(e){return {...defaultState}} }
-function saveState(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state)); updateChrome();}
+function loadState(){
+  const raw = safeStorage.get();
+  let parsed = null;
+  try{ parsed = raw ? JSON.parse(raw) : null; }catch(e){ parsed = null; }
+  if(!parsed || typeof parsed!=='object' || Array.isArray(parsed)) return {...defaultState};
+  // Coerce corrupted/legacy shapes so renderers can never hit a missing array/object
+  const s = {...defaultState, ...parsed};
+  for(const k of ['errors','mocks','customWords','activity','quizLog']) if(!Array.isArray(s[k])) s[k]=defaultState[k]!==undefined?[...defaultState[k]]:[];
+  for(const k of ['completed','mastery','notes','vocab','vocabDefs','essays']) if(!s[k]||typeof s[k]!=='object'||Array.isArray(s[k])) s[k]={};
+  if(typeof s.settings!=='object'||!s.settings||Array.isArray(s.settings)) s.settings={...defaultState.settings};
+  if(s.drillStats==null||typeof s.drillStats!=='object'){s.drillStats={attempts:0,correct:0,days:{}}}else if(!s.drillStats.days||typeof s.drillStats.days!=='object')s.drillStats.days={};
+  return s;
+}
+function saveState(){ safeStorage.set(JSON.stringify(state)); updateChrome(); }
 function logActivity(type,detail){state.activity.unshift({t:Date.now(),type,detail});state.activity=state.activity.slice(0,80);saveState();}
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),2200)}
 
@@ -1602,7 +1631,7 @@ function bindSettings(){
    for(const k of ['completed','notes','vocab','vocabDefs','essays','drillStats','diag'])if(k in x&&x[k]==null)delete merged[k];
    if(!Array.isArray(merged.errors))merged.errors=[];if(!Array.isArray(merged.mocks))merged.mocks=[];if(!Array.isArray(merged.customWords))merged.customWords=[];if(!Array.isArray(merged.activity))merged.activity=[];if(!Array.isArray(merged.quizLog))merged.quizLog=[];
    state=merged;invalidateStudyEntries();saveState();updateChrome();toast('Backup imported');render()}catch{toast('That file is not a valid GRE Atlas backup')}};r.readAsText(f)};
- $('#resetAll').onclick=()=>{if(confirm('Reset ALL GRE Atlas progress, notes, vocabulary scheduling, errors, and mocks in this browser?')){localStorage.removeItem(STORAGE_KEY);state=migrateState({...defaultState});invalidateStudyEntries();saveState();routeTo('dashboard');render()}}
+ $('#resetAll').onclick=()=>{if(confirm('Reset ALL GRE Atlas progress, notes, vocabulary scheduling, errors, and mocks in this browser?')){safeStorage.del();state=migrateState({...defaultState});invalidateStudyEntries();saveState();routeTo('dashboard');render()}}
 }
 
 let focusSeconds=1500,focusTimer=null,focusWasOpen=false;
@@ -1664,5 +1693,19 @@ function markStudyDay(){
 function todayISOOf(d){return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`}
 function updateStreak(){markStudyDay();saveState()}
 
-window.addEventListener('hashchange',render);
-document.addEventListener('DOMContentLoaded',()=>{updateStreak();updateChrome();initChrome();initSearch();initFocus();if(!location.hash)location.hash='#/'+(state.lastRoute||'dashboard');else render();setTimeout(()=>loadRemoteVocab(false),180)});
+window.addEventListener('hashchange',()=>{ try{ render() }catch(e){ console.error('GRE Atlas: render failed.', e); try{ $('#app').innerHTML=`<div class="page empty-state"><h3>Something went wrong displaying this page.</h3><p>${esc(String(e&&e.message||e))}</p><button class="pill-btn" onclick="routeTo('dashboard')">Back to dashboard</button></div>`; }catch(e2){} } });
+document.addEventListener('DOMContentLoaded',()=>{
+  // Boot must survive ANY failure — a broken optional feature must never blank the app.
+  const step = fn => { try{ fn() }catch(e){ console.error('GRE Atlas: startup step failed, continuing.', e); } };
+  step(updateStreak);
+  step(()=>{ if(!safeStorage.persistent()) toast('Private-browsing mode: progress lasts only for this session. Export a backup from a normal window to keep it.'); });
+  step(initChrome);
+  step(initSearch);
+  step(initFocus);
+  step(()=>{
+    const valid = !location.hash || state.lastRoute==='dashboard' || topicMap[state.lastRoute] || ['dashboard','roadmap','diagnostic','today','quant','verbal','writing','strategy','drill','vocab','vocab-browse','vocab-groups','vocab-traps','vocab-roots','vocab-vault','essay','errors','mocks','coverage','formula','resources','settings'].includes(state.lastRoute);
+    if(!location.hash) location.hash='#/'+(valid?state.lastRoute:'dashboard');
+    else render();
+  });
+  setTimeout(()=>{ try{ loadRemoteVocab(false) }catch(e){} },180);
+});

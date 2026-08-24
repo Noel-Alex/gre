@@ -1,11 +1,17 @@
 // GRE Atlas service worker: cache-first for the app shell so the site keeps working
 // offline / on flaky connections. Remote vocabulary sources are fetched live when
 // online and gracefully fall back to the built-in Atlas Core when not.
-const CACHE = 'gre-atlas-v1';
+const CACHE = 'gre-atlas-v3';
 const SHELL = ['./', './index.html', './styles.css', './app.js', './manifest.webmanifest'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => c.addAll(SHELL))
+      .then(() => self.skipWaiting())
+      // Never let a partial first install leave a broken SW in control
+      .catch(() => {})
+  );
 });
 
 self.addEventListener('activate', e => {
@@ -21,16 +27,19 @@ self.addEventListener('fetch', e => {
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
 
-  // App shell + navigations: cache-first, refresh in background (stale-while-revalidate)
+  // App shell + same-origin assets: network-first with cache fallback.
+  // Network-first guarantees users get fresh files after a deploy; the cached
+  // copy is only used when the network fails (offline / flaky).
   if (req.mode === 'navigate' || url.origin === location.origin) {
     e.respondWith(
-      caches.match(req).then(hit => {
-        const fresh = fetch(req).then(res => {
-          if (res && res.ok) caches.open(CACHE).then(c => c.put(req, res.clone()));
-          return res;
-        }).catch(() => hit);
-        return hit || fresh;
-      })
+      fetch(req).then(res => {
+        // Never cache an error page (e.g. transient 404/5xx during deploys) —
+        // that would poison offline access.
+        if (res && res.ok) caches.open(CACHE).then(c => c.put(req, res.clone()));
+        return res;
+      }).catch(() =>
+        caches.match(req).then(hit => hit || caches.match('./'))
+      )
     );
     return;
   }
