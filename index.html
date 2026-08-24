@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f4efe6" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312262b'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23fbf8f2' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="A comprehensive, interactive GRE General Test study studio for Quantitative Reasoning, Verbal Reasoning, Analytical Writing, vocabulary, timing, diagnostics, error review, and long-term planning." />
+  <title>GRE Atlas Master Edition — 340 + 6.0 Study Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+</head>
+<body>
+  <div class="grain"></div>
+  <div id="toast" class="toast" aria-live="polite"></div>
+
+  <header class="topbar">
+    <button class="brand" data-route="dashboard" aria-label="GRE Atlas home">
+      <span class="brand-mark">G</span>
+      <span class="brand-copy"><strong>GRE Atlas</strong><small>Master Edition · 340 + 6.0</small></span>
+    </button>
+    <div class="topbar-center">
+      <button class="search-trigger" id="searchTrigger" aria-label="Search the curriculum"><span>Search anything</span><kbd>Ctrl K</kbd></button>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn mobile-search-btn" id="searchTriggerMobile" title="Search the curriculum" aria-label="Search the curriculum">⌕</button>
+      <button class="icon-btn" id="focusBtn" title="Focus timer">◷</button>
+      <button class="icon-btn" id="themeBtn" title="Toggle night reading mode">◐</button>
+      <button class="profile-chip" data-route="settings"><span id="streakDot" class="status-dot"></span><span><b id="topXp">0 XP</b><small id="topStreak">Day 1</small></span></button>
+    </div>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <nav class="nav-section">
+        <span class="nav-eyebrow">Your desk</span>
+        <button class="nav-item" data-route="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-item" data-route="roadmap"><span>⌁</span> Study roadmap</button>
+        <button class="nav-item" data-route="diagnostic"><span>◈</span> Diagnostic</button>
+        <button class="nav-item" data-route="today"><span>✦</span> Today</button>
+      </nav>
+
+      <nav class="nav-section">
+        <span class="nav-eyebrow">Curriculum</span>
+        <button class="nav-item module-link quant" data-route="quant"><span>Q</span> Quantitative</button>
+        <button class="nav-item module-link verbal" data-route="verbal"><span>V</span> Verbal</button>
+        <button class="nav-item module-link writing" data-route="writing"><span>A</span> Analytical Writing</button>
+        <button class="nav-item module-link strategy" data-route="strategy"><span>S</span> Test strategy</button>
+      </nav>
+
+      <nav class="nav-section">
+        <span class="nav-eyebrow">Practice lab</span>
+        <button class="nav-item" data-route="drill"><span>⚡</span> Drill engine</button>
+        <button class="nav-item" data-route="vocab"><span>Aa</span> Vocabulary mastery <span id="dueBadge" class="badge gold" hidden></span></button>
+        <button class="nav-item" data-route="essay"><span>¶</span> Essay studio</button>
+        <button class="nav-item" data-route="errors"><span>↺</span> Error log</button>
+        <button class="nav-item" data-route="mocks"><span>▦</span> Mock tracker</button>
+      </nav>
+
+      <nav class="nav-section">
+        <span class="nav-eyebrow">Reference</span>
+        <button class="nav-item" data-route="coverage"><span>✓</span> Master syllabus</button>
+        <button class="nav-item" data-route="formula"><span>ƒ</span> Formula atlas</button>
+        <button class="nav-item" data-route="resources"><span>↗</span> Official resources</button>
+        <button class="nav-item" data-route="settings"><span>⚙</span> Settings</button>
+      </nav>
+
+      <div class="sidebar-progress">
+        <div class="mini-ring" id="miniRing"><span id="miniProgress">0%</span></div>
+        <div><strong>Mastery</strong><small id="miniTopicCount">0 / 0 topics</small></div>
+      </div>
+    </aside>
+
+    <main id="app" class="main"></main>
+  </div>
+
+  <button id="mobileNavBtn" class="mobile-nav-btn" aria-label="Open navigation">☰</button>
+  <div id="sidebarBackdrop" class="sidebar-backdrop" hidden></div>
+
+  <div id="searchModal" class="modal-wrap" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <section class="command-modal" role="dialog" aria-modal="true" aria-label="Search curriculum">
+      <div class="command-input"><span>⌕</span><input id="globalSearch" autocomplete="off" placeholder="Search topics, formulas, tools…" /><kbd>Esc</kbd></div>
+      <div id="searchResults" class="command-results"></div>
+    </section>
+  </div>
+
+  <div id="focusModal" class="modal-wrap" hidden>
+    <div class="modal-backdrop" data-close-focus></div>
+    <section class="focus-modal" role="dialog" aria-modal="true" aria-label="Focus timer">
+      <button id="focusClose" class="modal-close" aria-label="Close focus timer" title="Close timer">×</button>
+      <div class="focus-orbit"><span id="focusTime">25:00</span><small id="focusPhase">FOCUS</small></div>
+      <h2>Protect the next block.</h2>
+      <p>One chapter, one drill set, one essay. No tab-hopping.</p>
+      <div class="focus-controls">
+        <button id="focusStart" class="primary-btn">Start</button>
+        <button id="focusReset" class="secondary-btn">Reset</button>
+      </div>
+      <div class="focus-presets">
+        <button data-minutes="25">25 min</button><button data-minutes="45">45 min</button><button data-minutes="60">60 min</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>
