@@ -32,29 +32,21 @@ The high-frequency word sources and Deep Vault are loaded over the network when 
 
 ## Deploy on GitHub Pages
 
-1. Create a new GitHub repository, for example `gre-atlas`.
-2. Put the files from this folder in the **root** of the repository.
-3. Commit/push them to `main`.
-4. In GitHub open **Settings → Pages**.
-5. Under **Build and deployment**, choose **Deploy from a branch**.
-6. Select **main** and **/(root)**, then save.
-7. GitHub will publish at a URL similar to:
-   `https://YOUR-USERNAME.github.io/gre-atlas/`
+This repository is already deployed and live at:
 
-No `npm install`, build command, Jekyll configuration, or server is required.
+**https://noel-alex.github.io/gre/**
 
-## Git commands
+To redeploy after edits (from this folder):
 
 ```bash
-git init
 git add .
-git commit -m "Add GRE Atlas Master Edition"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/gre-atlas.git
-git push -u origin main
+git commit -m "Describe your change"
+git push
 ```
 
-Then enable GitHub Pages using the steps above.
+GitHub Pages will rebuild automatically within a minute or two.
+
+No `npm install`, build command, Jekyll configuration, or server is required.
 
 ## Run locally
 
