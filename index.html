@@ -4,12 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#f4efe6" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312262b'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='36' fill='%23fbf8f2' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E" />
   <meta name="description" content="A comprehensive, interactive GRE General Test study studio for Quantitative Reasoning, Verbal Reasoning, Analytical Writing, vocabulary, timing, diagnostics, error review, and long-term planning." />
-  <title>GRE Atlas Master Edition — 340 + 6.0 Study Studio</title>
+  <title>GRE Atlas Complete+ Edition — 340 + 6.0 Study Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Non-blocking font load: if fonts.googleapis.com is unreachable, the page must still render immediately -->
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="styles.css" />
@@ -21,13 +19,12 @@
   <header class="topbar">
     <button class="brand" data-route="dashboard" aria-label="GRE Atlas home">
       <span class="brand-mark">G</span>
-      <span class="brand-copy"><strong>GRE Atlas</strong><small>Master Edition · 340 + 6.0</small></span>
+      <span class="brand-copy"><strong>GRE Atlas</strong><small>Complete+ Edition · 340 + 6.0</small></span>
     </button>
     <div class="topbar-center">
       <button class="search-trigger" id="searchTrigger" aria-label="Search the curriculum"><span>Search anything</span><kbd>Ctrl K</kbd></button>
     </div>
     <div class="top-actions">
-      <button class="icon-btn mobile-search-btn" id="searchTriggerMobile" title="Search the curriculum" aria-label="Search the curriculum">⌕</button>
       <button class="icon-btn" id="focusBtn" title="Focus timer">◷</button>
       <button class="icon-btn" id="themeBtn" title="Toggle night reading mode">◐</button>
       <button class="profile-chip" data-route="settings"><span id="streakDot" class="status-dot"></span><span><b id="topXp">0 XP</b><small id="topStreak">Day 1</small></span></button>
@@ -55,7 +52,7 @@
       <nav class="nav-section">
         <span class="nav-eyebrow">Practice lab</span>
         <button class="nav-item" data-route="drill"><span>⚡</span> Drill engine</button>
-        <button class="nav-item" data-route="vocab"><span>Aa</span> Vocabulary mastery <span id="dueBadge" class="badge gold" hidden></span></button>
+        <button class="nav-item" data-route="vocab"><span>Aa</span> Vocabulary mastery</button>
         <button class="nav-item" data-route="essay"><span>¶</span> Essay studio</button>
         <button class="nav-item" data-route="errors"><span>↺</span> Error log</button>
         <button class="nav-item" data-route="mocks"><span>▦</span> Mock tracker</button>
@@ -79,7 +76,6 @@
   </div>
 
   <button id="mobileNavBtn" class="mobile-nav-btn" aria-label="Open navigation">☰</button>
-  <div id="sidebarBackdrop" class="sidebar-backdrop" hidden></div>
 
   <div id="searchModal" class="modal-wrap" hidden>
     <div class="modal-backdrop" data-close-modal></div>
@@ -106,20 +102,17 @@
     </section>
   </div>
 
+  <script src="deep-content.js"></script>
+  <script src="topic-toolkit.js"></script>
   <script src="app.js"></script>
   <script>
-    // Self-heal: remove any previously-installed service worker and purge its caches.
-    // The offline cache once served stale app code to returning visitors; this guarantees
-    // everyone runs the live files from now on.
-    (function () {
-      if (!('serviceWorker' in navigator)) return;
-      navigator.serviceWorker.getRegistrations().then(function (regs) {
-        regs.forEach(function (r) { r.unregister(); });
-      }).catch(function () {});
-      if (window.caches && caches.keys) {
-        caches.keys().then(function (keys) {
-          keys.forEach(function (k) { caches.delete(k); });
-        }).catch(function () {});
+    // Remove any legacy service worker/cache from earlier GRE Atlas deployments.
+    (function(){
+      if('serviceWorker' in navigator){
+        navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister())).catch(()=>{});
+      }
+      if(window.caches&&caches.keys){
+        caches.keys().then(keys=>keys.forEach(k=>caches.delete(k))).catch(()=>{});
       }
     })();
   </script>

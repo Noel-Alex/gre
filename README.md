@@ -1,89 +1,119 @@
-# GRE Atlas Master Edition — 340 + 6.0 Study Studio
+# GRE Atlas Complete Edition — GRE 340 + 6.0 Study Studio
 
-A static, browser-based GRE preparation system built for long-term, high-score preparation. No build step, backend, framework, or package manager is required; the repository is ready for GitHub Pages as-is.
+This folder is a **drop-in GitHub Pages site**. There is no build step, package manager, framework, backend, or deployment script.
 
-## What is in the Master Edition
+## Replace your current repo with this
 
-- **109 resumable curriculum chapters**
-  - 51 Quantitative Reasoning
-  - 33 Verbal Reasoning
-  - 14 Analytical Writing
-  - 11 test-strategy / execution chapters
-- A **Master Syllabus** that maps the current official ETS scope to explicit GRE Atlas chapters.
-- A route-based curriculum so you can stop for days or weeks and resume exactly where you left off.
-- Diagnostic, original drill engine, formula atlas, error log, mock tracker, focus timer, notes, progress, XP, and backup/export.
-- **Vocabulary Mastery System v2**:
-  - 380 built-in annotated Atlas Core words that work offline
-  - browser-side merge of public mirrors of GregMAT 960 and Magoosh 1000 word lists, de-duplicated into a high-frequency study deck
-  - consensus/high-frequency tiers
-  - spaced retrieval with a configurable daily-new-word cap
-  - 36 semantic groups
-  - 60 secondary/trap meanings
-  - 60 roots and affixes
-  - a searchable 9,500+ word Deep Vault drawn from a public cross-list GRE collection
-  - on-demand definitions for supplemental words from Open Dictionary / Wiktionary-derived JSON, cached in browser storage after lookup
-  - personal vocabulary promotion from practice and from the Deep Vault
-
-### Vocabulary design note
-
-There is no finite official ETS list of "all GRE words." The Master Edition therefore does **not** pretend that memorizing a giant alphabetical dump guarantees vocabulary coverage. The default SRS focuses on high-frequency and consensus vocabulary, while the Deep Vault provides breadth when practice exposes an unusual word.
-
-The high-frequency word sources and Deep Vault are loaded over the network when the site starts. If those requests are unavailable, the 380-word annotated Atlas Core remains usable offline. Supplemental definitions are also fetched only when needed and then cached in `localStorage`.
-
-## Deploy on GitHub Pages
-
-This repository is already deployed and live at:
-
-**https://noel-alex.github.io/gre/**
-
-To redeploy after edits (from this folder):
+If your repository is already `Noel-Alex/gre`, copy **all files in this folder** into the repository root, replacing the old versions, then run:
 
 ```bash
-git add .
-git commit -m "Describe your change"
+git add -A
+git commit -m "Upgrade GRE Atlas to Complete Edition"
 git push
 ```
 
-GitHub Pages will rebuild automatically within a minute or two.
+Your existing GitHub Pages branch/root configuration can stay the same.
 
-No `npm install`, build command, Jekyll configuration, or server is required.
+The application deliberately keeps the existing localStorage key (`gre-atlas-state-v1`), so progress already saved at the same GitHub Pages origin is preserved when the files are replaced.
+
+## What changed
+
+The original Master Edition had the correct syllabus breadth but lessons were too compressed. The Complete Edition adds a deep instructional layer to **every one of the 109 curriculum chapters**:
+
+- foundation notes already present in the chapter
+- **6 additional deep-mastery notes** specific to that chapter
+- a **4-step GRE attack algorithm**
+- **2 worked reasoning examples that are separate from the checkpoint**
+- a topic-specific + module-specific **trap radar**
+- a **6-rep retrieval/transfer workout**
+- an independent cold checkpoint
+- a five-part mastery standard and personal memory-note field
+
+Coverage:
+
+- **51 Quantitative Reasoning chapters**
+- **33 Verbal Reasoning chapters**
+- **14 Analytical Writing chapters**
+- **11 strategy / test-execution chapters**
+- **109 / 109 chapters have six deep-mastery notes**
+
+The lesson time label is now derived from the amount of lesson material plus an active-practice allowance instead of displaying a fixed arbitrary “35 min” on tiny lessons.
+
+## Vocabulary
+
+The vocabulary system remains deliberately layered rather than pretending there is an official finite GRE word list:
+
+- **380 fully annotated offline Atlas Core words**
+- high-frequency online merge of public mirrors of GregMAT 960 + Magoosh 1000
+- de-duplicated consensus/high-frequency study tiers
+- configurable spaced-repetition queue
+- **36 semantic groups**
+- **60 secondary/trap meanings**
+- **60 roots and affixes**
+- searchable **9,500+ word Deep Vocabulary Vault**
+- on-demand Wiktionary-derived definitions for supplemental words
+- personal-word promotion into SRS
+
+The online lists are supplemental. The built-in 380-word annotated core works even if those network requests fail.
+
+## Practice and study tools
+
+The site includes:
+
+- full route-based curriculum and resume state
+- diagnostic
+- randomized Quant and Verbal drill engine
+- vocabulary SRS and browsing labs
+- formula atlas
+- Essay Studio with 30-minute timer
+- error log
+- mock tracker
+- study roadmap
+- focus timer
+- chapter notes
+- progress / XP
+- JSON backup and restore
+- official ETS resource links
+- Master Syllabus coverage map
+
+Generated questions in GRE Atlas are original training material. **Official ETS / POWERPREP material remains the source for final score calibration and authentic released/practice GRE questions.**
+
+## Reliability changes preserved
+
+- focus modal begins hidden and can close with × / backdrop / Escape
+- `[hidden]` is forced to `display:none`
+- dynamic route navigation uses delegated click handling
+- browser storage failures fall back to in-memory state instead of blanking the application
+- startup/render failures are isolated so an optional feature cannot easily white-screen the site
+- legacy service workers/caches are removed on load so an older deployment cannot continue serving stale app code
+- Google Fonts load non-blockingly; system fonts remain usable if the CDN is unavailable
+- hash routes remain GitHub Pages-safe
+
+## Files
+
+- `index.html` — GitHub Pages entry point
+- `styles.css` — complete visual system
+- `deep-content.js` — deep instructional layer for all 109 chapters
+- `app.js` — curriculum, vocabulary, drills, routing, state, tools, and interactions
+- `GRE_Atlas_Standalone.html` — optional single-file version
+- `CONTENT_AUDIT.md` — build/coverage audit
+- `.nojekyll` — disables Jekyll transformation
+- `.gitignore`
 
 ## Run locally
 
-You can double-click `index.html`, but serving the folder locally gives browser networking the same shape as a hosted site:
+For best parity with GitHub Pages:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then open `http://localhost:8000`.
+Then visit `http://localhost:8000`.
 
-## Data and privacy
+You can also open `GRE_Atlas_Standalone.html` directly.
 
-Study state is stored in the browser with `localStorage`, including progress, vocabulary scheduling, cached supplemental definitions, notes, errors, mock scores, essay drafts, and settings. GRE Atlas has no backend.
+## Data
 
-Use the in-app backup export periodically. `localStorage` is origin-specific, so local-file progress and GitHub Pages progress are separate. Export from one and import into the other when moving environments.
+Study state is browser-local. Export a JSON backup periodically from Settings.
 
-## Routing
-
-GRE Atlas uses hash routes such as `#/quant`, `#/vocab`, `#/vocab-traps`, and `#/coverage`. This keeps every in-app route compatible with GitHub Pages project subpaths without server rewrites.
-
-## Files
-
-- `index.html` — site shell and entry point
-- `styles.css` — complete visual system and responsive layout
-- `app.js` — curriculum, vocabulary systems, tools, routing, state, drills, and interactions
-- `.nojekyll` — tells GitHub Pages to serve the static files directly
-
-## Vocabulary research/data references
-
-- ETS defines the current Verbal measure and official question families.
-- Magoosh's 2026 vocabulary-list review recommends prioritizing a focused high-frequency core rather than brute-forcing very large unranked lists.
-- Supplemental word-list coverage uses the public `Xatta-Trone/gre-words-collection` project as a source mirror/aggregation.
-- Supplemental definitions are fetched from `mhollingshead/open-dictionary`, which exposes Wiktionary-derived dictionary JSON.
-
-GRE Atlas does not copy proprietary commercial flashcard definitions into the repository.
-
-## Focus timer
-
-The timer overlay starts hidden and can be closed with the **×** button, **Esc**, or by clicking the backdrop. Closing the panel does not stop a running timer.
+If you replace the files at the **same** GitHub Pages URL, existing progress remains under the same localStorage origin/key. A different domain or local `file://` copy has separate browser storage.
