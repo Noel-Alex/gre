@@ -1,119 +1,196 @@
-# GRE Atlas Complete Edition — GRE 340 + 6.0 Study Studio
+# GRE Atlas — Source-Integrated Edition
 
-This folder is a **drop-in GitHub Pages site**. There is no build step, package manager, framework, backend, or deployment script.
+A static, route-based GRE General Test study studio designed to consolidate a complete curriculum, active recall, targeted practice, vocabulary, Analytical Writing, test strategy, source navigation, and long-term progress in one GitHub Pages site.
 
-## Replace your current repo with this
+## What changed in this edition
 
-If your repository is already `Noel-Alex/gre`, copy **all files in this folder** into the repository root, replacing the old versions, then run:
+This build was audited against the supplied 2025 ETS books and the supplied Manhattan Prep 5 lb. book, with the legacy ETS GRE Big Book treated as a filtered supplemental source rather than a current-format authority.
+
+### Curriculum
+
+**115 resumable chapters**
+
+- **56 Quantitative Reasoning**
+- **33 Verbal Reasoning**
+- **14 Analytical Writing**
+- **12 Test Strategy / execution**
+
+The source audit added explicit chapters for gaps that were too easy to hide inside broader headings:
+
+- Decimals: place value, operations, conversion, rounding
+- Simple and compound interest
+- Graphs of functions
+- Backsolving / smart numbers / variables-in-the-choices
+- The full ETS problem-solving strategy repertoire
+- A source-practice system explaining how to sequence official, third-party, legacy, mixed, and full-test material
+
+### Lesson architecture
+
+Every chapter includes:
+
+- foundation teaching notes
+- six deep-mastery notes
+- chapter-specific tricks / trap-prevention rules
+- chapter-specific formulas or reasoning frameworks
+- a repeatable attack algorithm
+- two separate worked reasoning examples
+- a trap radar
+- a six-rep retrieval / transfer workout
+- a separate cold checkpoint
+- a source-synthesis block showing where the skill lives in the supplied books
+- a source-specific practice recommendation
+- mastery criteria, personal notes, previous / next navigation
+
+The old failure mode — a nominal 30–40 minute lesson containing only a few lines and reusing the teaching example as the question — is not the lesson model used here.
+
+## Sourcebook & Practice Map
+
+The new `#/sourcebook` route organizes five source families:
+
+1. **The Official Guide to the GRE General Test, Fourth Edition (2025)** — current source of truth, mixed sets, Math Review, two full tests.
+2. **Official GRE Quantitative Reasoning Practice Questions, Volume 1, Third Edition (2025)** — 150 authentic Quant questions, content-area practice, Math Review, conventions and mixed sets.
+3. **Official GRE Verbal Reasoning Practice Questions, Volume 1, Third Edition (2025)** — 150 authentic Verbal questions, RC/TC/SE by difficulty, mixed sets and AWA guidance.
+4. **Manhattan Prep 5 lb. Book of GRE Practice Problems, Third Edition** — high-volume third-party skill drilling. Its Advanced Quant material is deliberately treated as stretch work, not as the baseline definition of current GRE difficulty.
+5. **ETS GRE Big Book** — legacy paper-test material. The site explicitly filters it: RC and selected sentence-completion/foundational Quant practice can transfer; analogies, antonyms, old timing/scoring and discontinued formats are not treated as current GRE practice.
+
+Every one of the 115 chapters has a source assignment.
+
+### Practice ladder
+
+The recommended sequence is:
+
+**Learn → Retrieve → Targeted volume → Current official calibration → Mixed timed transfer → Full simulation**
+
+This preserves scarce high-fidelity ETS material until it can actually measure transfer and pacing rather than merely expose a basic content gap.
+
+## Official-scope audit
+
+The Master Syllabus contains both a broad ETS content map and a finer 2025-book crosswalk. Quant explicitly maps the GRE Math Review sections:
+
+- 1.1 Integers
+- 1.2 Fractions
+- 1.3 Exponents and Roots
+- 1.4 Decimals
+- 1.5 Real Numbers
+- 1.6 Ratio
+- 1.7 Percent
+- 2.1 Algebraic Expressions
+- 2.2 Rules of Exponents
+- 2.3 Solving Linear Equations
+- 2.4 Solving Quadratic Equations
+- 2.5 Solving Linear Inequalities
+- 2.6 Functions
+- 2.7 Applications — average, mixture, rate, work, interest
+- 2.8 Coordinate Geometry
+- 2.9 Graphs of Functions
+- 3.1–3.6 Geometry
+- 4.1–4.6 Data presentation, descriptive methods, counting, probability, distributions, and DI
+
+The Verbal crosswalk maps ETS’s explicit RC abilities, TC/SE rules and current response formats. The AWA crosswalk maps task compliance, complexity, development, organization, language control and timed execution.
+
+## Drill Lab
+
+The original practice engine includes Quant families for:
+
+- decimals / rounding
+- percent / reverse percent / successive change
+- interest / growth
+- ratio
+- algebra
+- remainders
+- averages / statistics
+- probability
+- geometry
+- exponents / roots
+- divisibility / GCF
+- inequalities
+- functions
+- function graphs
+- backsolving / smart-number reasoning
+- coordinate geometry
+- counting
+- sets / Venn diagrams
+- data interpretation
+- Quantitative Comparison
+
+and Verbal families for TC, SE, sentence logic, vocabulary, RC, inference, argument reasoning and tone/stance.
+
+Atlas drill questions are original training items. They are not presented as substitutes for current official ETS calibration.
+
+## Vocabulary system
+
+- 380 fully annotated built-in Atlas Core entries that work offline
+- SRS review scheduling
+- daily-new quota
+- semantic groups
+- secondary-meaning / familiar-word traps
+- roots and affixes
+- personal word promotion from practice
+- optional browser-loaded high-frequency list merge
+- optional 9,500+ Deep Vault for lookup / breadth rather than brute-force memorization
+
+## Other tools
+
+- Dashboard and daily plan
+- Roadmap / test-date planning
+- Mini diagnostic
+- Error Log
+- Mock Tracker
+- Essay Studio
+- Formula & Framework Atlas with a deck for every chapter
+- Master Syllabus
+- Sourcebook & Practice Map
+- Official Resources
+- Focus timer
+- Ctrl/Cmd + K global search
+- local progress / notes / SRS storage
+- JSON export/import backup
+
+## Copyright / source handling
+
+The repository does **not** bundle or republish the supplied copyrighted ETS or Manhattan books and does not copy their question banks. It contains original teaching, original drills, source-location references, coverage maps and study-method synthesis. Students should use their lawful copies for the authentic questions and the publishers' explanations.
+
+## Deploy on GitHub Pages
+
+Put the contents of this folder at the repository root and push:
 
 ```bash
 git add -A
-git commit -m "Upgrade GRE Atlas to Complete Edition"
+git commit -m "Upgrade GRE Atlas to Source-Integrated Edition"
 git push
 ```
 
-Your existing GitHub Pages branch/root configuration can stay the same.
+Then enable GitHub Pages from the default branch / root if it is not already enabled.
 
-The application deliberately keeps the existing localStorage key (`gre-atlas-state-v1`), so progress already saved at the same GitHub Pages origin is preserved when the files are replaced.
+`index.html` is the normal deployed entry point. `.nojekyll` is included.
 
-## What changed
+## Local use
 
-The original Master Edition had the correct syllabus breadth but lessons were too compressed. The Complete Edition adds a deep instructional layer to **every one of the 109 curriculum chapters**:
-
-- foundation notes already present in the chapter
-- **6 additional deep-mastery notes** specific to that chapter
-- a **4-step GRE attack algorithm**
-- **2 worked reasoning examples that are separate from the checkpoint**
-- a topic-specific + module-specific **trap radar**
-- a **6-rep retrieval/transfer workout**
-- an independent cold checkpoint
-- a five-part mastery standard and personal memory-note field
-
-Coverage:
-
-- **51 Quantitative Reasoning chapters**
-- **33 Verbal Reasoning chapters**
-- **14 Analytical Writing chapters**
-- **11 strategy / test-execution chapters**
-- **109 / 109 chapters have six deep-mastery notes**
-
-The lesson time label is now derived from the amount of lesson material plus an active-practice allowance instead of displaying a fixed arbitrary “35 min” on tiny lessons.
-
-## Vocabulary
-
-The vocabulary system remains deliberately layered rather than pretending there is an official finite GRE word list:
-
-- **380 fully annotated offline Atlas Core words**
-- high-frequency online merge of public mirrors of GregMAT 960 + Magoosh 1000
-- de-duplicated consensus/high-frequency study tiers
-- configurable spaced-repetition queue
-- **36 semantic groups**
-- **60 secondary/trap meanings**
-- **60 roots and affixes**
-- searchable **9,500+ word Deep Vocabulary Vault**
-- on-demand Wiktionary-derived definitions for supplemental words
-- personal-word promotion into SRS
-
-The online lists are supplemental. The built-in 380-word annotated core works even if those network requests fail.
-
-## Practice and study tools
-
-The site includes:
-
-- full route-based curriculum and resume state
-- diagnostic
-- randomized Quant and Verbal drill engine
-- vocabulary SRS and browsing labs
-- formula atlas
-- Essay Studio with 30-minute timer
-- error log
-- mock tracker
-- study roadmap
-- focus timer
-- chapter notes
-- progress / XP
-- JSON backup and restore
-- official ETS resource links
-- Master Syllabus coverage map
-
-Generated questions in GRE Atlas are original training material. **Official ETS / POWERPREP material remains the source for final score calibration and authentic released/practice GRE questions.**
-
-## Reliability changes preserved
-
-- focus modal begins hidden and can close with × / backdrop / Escape
-- `[hidden]` is forced to `display:none`
-- dynamic route navigation uses delegated click handling
-- browser storage failures fall back to in-memory state instead of blanking the application
-- startup/render failures are isolated so an optional feature cannot easily white-screen the site
-- legacy service workers/caches are removed on load so an older deployment cannot continue serving stale app code
-- Google Fonts load non-blockingly; system fonts remain usable if the CDN is unavailable
-- hash routes remain GitHub Pages-safe
-
-## Files
-
-- `index.html` — GitHub Pages entry point
-- `styles.css` — complete visual system
-- `deep-content.js` — deep instructional layer for all 109 chapters
-- `app.js` — curriculum, vocabulary, drills, routing, state, tools, and interactions
-- `GRE_Atlas_Standalone.html` — optional single-file version
-- `CONTENT_AUDIT.md` — build/coverage audit
-- `.nojekyll` — disables Jekyll transformation
-- `.gitignore`
-
-## Run locally
-
-For best parity with GitHub Pages:
+Opening `index.html` directly works for most of the application. For the most browser-consistent behavior, serve the folder locally:
 
 ```bash
 python -m http.server 8000
 ```
 
-Then visit `http://localhost:8000`.
+Then open `http://localhost:8000`.
 
-You can also open `GRE_Atlas_Standalone.html` directly.
+The optional remote vocabulary layers require internet access; the built-in Atlas Core remains available without them.
 
-## Data
+## Progress compatibility
 
-Study state is browser-local. Export a JSON backup periodically from Settings.
+The local-storage key remains:
 
-If you replace the files at the **same** GitHub Pages URL, existing progress remains under the same localStorage origin/key. A different domain or local `file://` copy has separate browser storage.
+`gre-atlas-state-v1`
+
+so existing progress from earlier GRE Atlas editions on the same GitHub Pages origin is preserved unless browser storage is cleared.
+
+## File map
+
+- `index.html` — application shell
+- `styles.css` — editorial UI, responsive layout, sourcebook styling
+- `app.js` — curriculum, tools, drill engine, vocabulary, routes and state
+- `deep-content.js` — deep instructional layer
+- `topic-toolkit.js` — chapter-specific tricks + formula/framework decks
+- `source-synthesis.js` — source catalog, 2025-book crosswalk, chapter assignments, legacy filter, new-source deep/toolkit extensions
+- `GRE_Atlas_Standalone.html` — generated single-file copy
+- `CONTENT_AUDIT.md` — machine-checked content and package audit

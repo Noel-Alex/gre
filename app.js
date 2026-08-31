@@ -677,6 +677,37 @@ TOPICS.push(...[
   ['Parity/mod constraints',`If one side must be even, odd, or a particular remainder class, eliminate impossible cases immediately.`],
   ['Bounds',`Positive integer restrictions plus a fixed sum/product often make extreme values easy to identify. Always use the domain information the GRE gives you.`]
  ],{difficulty:'Advanced',quiz:[['If positive integers x and y satisfy xy=12, how many ordered pairs (x,y) exist?',['3','4','6','12'],2,'Positive divisors x=1,2,3,4,6,12 each determine y, giving 6 ordered pairs.']]}),
+ topic('q-decimals','quant','Decimals: place value, operations & rounding','Master decimal magnitude, fraction/percent conversion, arithmetic, repeating/terminating forms, and rounding without placement errors',[
+  ['Place value is the model',`Every place to the right of the decimal is one tenth of the place before it: tenths, hundredths, thousandths, and so on. Leading zeros matter for magnitude: 0.004 is one tenth of 0.04. Write aligned place values instead of trusting visual intuition.`],
+  ['Arithmetic',`For addition/subtraction, align decimal points. For multiplication, multiply as integers then restore the combined number of decimal places. For division, multiply both dividend and divisor by the same power of 10 until the divisor is convenient.`],
+  ['Convert strategically',`A terminating decimal is a fraction with denominator a power of 10 and can be reduced. Decimal ↔ percent is a ×100 or ÷100 relationship. Choose the representation—fraction, decimal, percent—that makes comparison or cancellation easiest.`],
+  ['Rounding and checking',`Identify the requested place, inspect the next digit only, and round once at the end unless the prompt instructs otherwise. Before accepting a calculator result, estimate its order of magnitude; decimal-key errors are common and easy to catch.`]
+ ],{quiz:[['0.0375 expressed as a percent is:',['0.375%','3.75%','37.5%','375%'],1,'Multiply a decimal by 100 to express it as a percent: 0.0375×100%=3.75%.']]}),
+ topic('q-interest','quant','Simple & compound interest','Model financial growth as GRE algebra: simple interest, compounding, reverse growth, and calculator-safe setup',[
+  ['Simple interest',`Simple interest is computed from the original principal throughout. With decimal annual rate r and time t years, the final value is P(1+rt). The dollar interest alone is Prt.`],
+  ['Compound interest',`With annual compounding, each period multiplies the previous balance by 1+r, giving P(1+r)^t. If interest is compounded n times per year, the per-period rate is r/n and the number of periods is nt.`],
+  ['Reverse growth',`If the final amount is known, divide by the accumulated growth factor to find the original principal. This is the same reverse-percent logic used elsewhere: undo multiplication by dividing.`],
+  ['GRE execution',`Separate modeling from calculator work. Convert the percent to decimal, write the full expression with parentheses/exponent, estimate the expected direction and size, and only then calculate.`]
+ ],{quiz:[['$2,000 earns simple interest at 5% per year for 3 years. Final value?',['$2,100','$2,200','$2,300','$2,315.25'],2,'Simple value = 2000(1+0.05×3)=2000(1.15)=$2,300.']]}),
+ topic('q-function-graphs','quant','Graphs of functions','Read functions visually: intercepts, intersections, transformations, piecewise endpoints, and scale',[
+  ['Graph as input-output map',`The graph y=f(x) consists of points (x,f(x)). To read f(a), go to x=a and read the corresponding y-value. An x-intercept is a solution to f(x)=0; the y-intercept is f(0), if defined.`],
+  ['Intersections solve equations',`Where y=f(x) and y=g(x) intersect, both functions have the same output, so f(x)=g(x). A graph can therefore solve or estimate equations without symbolic manipulation.`],
+  ['Transformations',`Adding k outside a function shifts outputs vertically. Replacing x by x−h shifts the graph right by h. Multiplying outputs by a changes vertical scale. GRE questions usually test the relationship qualitatively rather than requiring advanced function theory.`],
+  ['Piecewise and scale',`Check open versus closed endpoints and which rule owns a boundary input. ETS coordinate systems are drawn to scale, so visual estimation can be legitimate there; ordinary geometry figures follow different rules.`]
+ ],{quiz:[['If graphs y=f(x) and y=g(x) intersect at x=4, which must be true?',['f(4)=0','g(4)=0','f(4)=g(4)','f(4)+g(4)=4'],2,'At an intersection the two graphs share the same y-value, so f(4)=g(4).']]}),
+ topic('q-answer-choice-methods','quant','Backsolving, smart numbers & variables in choices','Use the answer choices as information when verification is easier than forward algebra',[
+  ['Backsolving',`When choices are candidate numeric solutions, substitute a choice into the original conditions. If choices are ordered and the relationship is monotonic, starting near the middle can eliminate several choices at once.`],
+  ['Smart numbers',`When variables remain deliberately unspecified, choose legal values that make the relationships easy. Percent problems often welcome 100; fraction/ratio problems often welcome a common multiple of denominators.`],
+  ['Avoid degenerate picks',`Values such as 0, 1, equal quantities, or numbers already embedded in the problem can make distinct expressions collapse to the same value. If more than one symbolic answer survives, choose a second structurally different legal value.`],
+  ['Decision rule',`These techniques are not mandatory shortcuts. Use them when they reduce work while preserving certainty. If one line of algebra solves the problem cleanly, algebra is usually safer and faster.`]
+ ],{difficulty:'Advanced',quiz:[['When testing symbolic answer choices by picking numbers, why can x=0 or x=1 be poor choices?',['They are never real numbers','They can make different expressions accidentally become equal or vanish','The GRE forbids them','They always make arithmetic harder'],1,'Degenerate values can erase distinctions, leaving multiple choices apparently correct.']]}),
+ topic('q-strategy-repertoire','quant','The ETS problem-solving repertoire','Turn the official 3-step process and 14 strategy families into an automatic decision system',[
+  ['The control loop',`ETS frames Quant problem solving as three stages: understand the problem, carry out a strategy, and check the answer. Most avoidable errors can be located at one of those stages: representation, execution, or verification.`],
+  ['Translate representations',`Practice moving words→algebra, words→diagram, algebra→graph, and figure→algebra. Many difficult-looking problems become routine once represented in the form that exposes the relationship.`],
+  ['Simplify and search structure',`Simplify expressions, add useful geometric lines, find patterns, and search for mathematical relationships before calculating. The goal is to reduce the problem, not perform more operations.`],
+  ['Test, divide, disprove, verify sufficiency',`Estimate; guess and refine; try multiple legal values; divide into cases; use a counterexample to destroy a universal claim; and ask what missing fact would make an answer determinate. These habits are especially powerful in QC.`],
+  ['The full 14-strategy checklist',`1) words→arithmetic/algebra; 2) words→figure/diagram; 3) algebra→graph; 4) figure→arithmetic/algebra; 5) simplify the representation; 6) add useful structure to a geometric figure; 7) find a pattern; 8) search for a mathematical relationship; 9) estimate; 10) trial and error—guess/refine or test multiple legal values; 11) divide into cases; 12) adapt a solution from a related problem; 13) test whether a conclusion necessarily follows, often by seeking a counterexample; 14) determine what additional information would be sufficient to force an answer.`]
+ ],{difficulty:'Advanced',quiz:[['You suspect a statement is not always true for all allowed x. The fastest rigorous GRE move is often to:',['compute ten random examples','find one legal counterexample','assume the graph is to scale','use the calculator'],1,'One legal counterexample disproves an “always” claim; many confirming examples cannot prove it.']]}),
 // WRITING — additional 6.0-specific drills
  topic('a-nuance','writing','Nuance without mush: qualify a thesis','Take a clear position while identifying the exact conditions under which the opposite view has force',[
   ['Qualification is not indecision',`A nuanced thesis still answers the prompt. State the general rule, then specify a boundary: “Generally X because A and B; however, when condition C holds, Y becomes preferable.”`],
@@ -726,7 +757,13 @@ TOPICS.push(...[
   ['Replicate conditions',`Same start time when possible, normal breaks/rules, no pausing, no answer checking mid-test, realistic scratch setup, and no phone interruptions.`],
   ['Taper',`In the final days, prioritize stable sleep, light retrieval, error-log review, familiar pacing, and logistics. Avoid introducing dozens of new tricks or exhausting marathon sessions.`],
   ['After each mock',`Separate content gap from process failure. The next week’s plan should be driven by repeated evidence across questions, not emotion about one scaled score.`]
- ],{difficulty:'Advanced',quiz:[['The best use of an official full simulation is to:',['take it casually for extra questions','replicate test conditions and diagnose pacing/process/content','pause whenever tired','look up answers during sections'],1,'Calibration requires realistic conditions and disciplined post-test analysis.']]})
+ ],{difficulty:'Advanced',quiz:[['The best use of an official full simulation is to:',['take it casually for extra questions','replicate test conditions and diagnose pacing/process/content','pause whenever tired','look up answers during sections'],1,'Calibration requires realistic conditions and disciplined post-test analysis.']]}),
+ topic('s-source-practice-system','strategy','Source practice system: use every book without wasting it','Sequence Atlas, ETS official material, Manhattan volume, legacy Big Book practice, mixed sets, and full tests for maximum learning per question',[
+  ['A source has a job',`Current ETS material is the calibration authority: format, wording, difficulty, conventions, scoring, and full-test behavior. Manhattan is a high-volume supplement. The Big Book is legacy official material whose transferable parts must be filtered.`],
+  ['Increase fidelity gradually',`Learn the concept here, retrieve it without notes, do targeted original/third-party volume, then spend current official questions on calibration. After several topics are stable, move to official mixed sets; use full simulations later for pacing/adaptation/stamina.`],
+  ['Review before consuming more',`A missed or lucky-guessed question should produce a diagnosis, a replacement rule, targeted repetitions, and a delayed mixed retest. Doing 100 more questions without repairing the pattern creates familiarity, not mastery.`],
+  ['Protect scarce high-value material',`Do not casually burn full official tests or all current mixed sets early. Big Book RC can supply large extra reading volume; obsolete analogies/antonyms/timing are not current-GRE practice. Extremely hard third-party Quant is optional stretch work, not the foundation of a high score.`]
+ ],{difficulty:'Advanced',quiz:[['Which sequence best protects learning value?',['Full official test → learn basics → review','Learn → targeted reps → official calibration → mixed timed sets → full simulation','Big Book analogies → Manhattan Advanced Quant only → test','Only read explanations without solving'],1,'Increase fidelity as mastery improves and review each layer before spending the next one.']]})
 ]);
 
 const topicMap = Object.fromEntries(TOPICS.map(t=>[t.id,t]));
@@ -820,6 +857,8 @@ const DIAGNOSTIC = [
 
 const FORMULAS = [
  ['Arithmetic',['percent change = (new−old)/old ×100%','average = sum/count','weighted mean = Σ(wx)/Σw','distance = rate×time','work rates add: 1/T = 1/a + 1/b','GCF(a,b)×LCM(a,b)=ab for positive integers']],
+ ['Growth & interest',['simple interest value = P(1+rt)','compound annually = P(1+r)^t','compound n times/year = P(1+r/n)^(nt)','reverse growth: original = final / growth factor']],
+ ['Functions & graphs',['x-intercepts solve f(x)=0','intersections solve f(x)=g(x)','y-intercept = f(0)','f(x−h) shifts right h; f(x)+k shifts up k']],
  ['Exponents & algebra',['a^m·a^n=a^(m+n)','a^m/a^n=a^(m−n)','(a^m)^n=a^(mn)','a^(−n)=1/a^n','a²−b²=(a−b)(a+b)','quadratic: x=[−b±√(b²−4ac)]/(2a)']],
  ['Lines & coordinates',['slope=(y₂−y₁)/(x₂−x₁)','y=mx+b','distance=√[(x₂−x₁)²+(y₂−y₁)²]','midpoint=((x₁+x₂)/2,(y₁+y₂)/2)']],
  ['Triangles',['angle sum=180°','area=½bh','a²+b²=c² for right triangles','45-45-90 → 1:1:√2','30-60-90 → 1:√3:2']],
@@ -860,6 +899,7 @@ function render(){
   else if(route==='errors') app.innerHTML=renderErrors();
   else if(route==='mocks') app.innerHTML=renderMocks();
   else if(route==='coverage') app.innerHTML=renderCoverage();
+  else if(route==='sourcebook') app.innerHTML=renderSourcebook();
   else if(route==='formula') app.innerHTML=renderFormula();
   else if(route==='resources') app.innerHTML=renderResources();
   else if(route==='settings') app.innerHTML=renderSettings();
@@ -946,6 +986,13 @@ function renderTopicToolkit(t){
   const k=topicToolkit(t), labels=toolkitLabels(t); if(!k.tricks.length&&!k.formulas.length)return '';
   return `<section class="lesson-section toolkit-section"><span class="eyebrow">GRE quick-reference layer · chapter-specific</span><h2>Tricks, formulas & things worth memorizing</h2><p class="section-intro">This is the compact layer to revisit before timed practice. It is deliberately specific to <b>${esc(t.title)}</b>: shortcuts that save time, rules that prevent classic GRE traps, and the formulas/frameworks that should be instantly retrievable.</p><div class="toolkit-columns"><div class="toolkit-panel tricks-panel"><div class="toolkit-panel-head"><span class="toolkit-icon">⚡</span><div><span class="eyebrow">${esc(labels[0])}</span><h3>Shortcut & trap deck</h3></div></div><div class="toolkit-list">${k.tricks.map((x,i)=>`<div class="toolkit-item trick-item"><span class="toolkit-num">${String(i+1).padStart(2,'0')}</span><p>${esc(x)}</p></div>`).join('')}</div></div><div class="toolkit-panel formula-panel"><div class="toolkit-panel-head"><span class="toolkit-icon">ƒ</span><div><span class="eyebrow">${esc(labels[1])}</span><h3>Formula / framework deck</h3></div></div><div class="formula-stack">${k.formulas.map((x,i)=>`<div class="topic-formula"><span>${String(i+1).padStart(2,'0')}</span><code>${esc(x)}</code></div>`).join('')}</div><div class="toolkit-memory-cue"><b>Memory rule</b><p>Do not merely recognize these. Cover the right side and retrieve each line from the chapter title before marking the lesson mastered.</p></div></div></div></section>`;
 }
+function sourceGuide(t){return (window.GRE_SOURCE_GUIDE&&window.GRE_SOURCE_GUIDE.topicSources&&window.GRE_SOURCE_GUIDE.topicSources[t.id])||null}
+function renderSourceSynthesis(t){
+  const g=sourceGuide(t),cat=window.GRE_SOURCE_GUIDE?.catalog||{}; if(!g)return '';
+  const primary=cat[g.primary]||{},pr=state.sourceProgress?.[t.id]||{};
+  return `<section class="lesson-section source-synthesis-section"><span class="eyebrow">Source synthesis · what your books add</span><h2>Where this chapter lives in the source library</h2><p class="section-intro">GRE Atlas consolidates the teaching; your books provide high-fidelity calibration and extra volume. We reference the relevant sections rather than reproducing copyrighted question banks.</p><div class="source-synthesis-grid"><article class="source-anchor-card"><span class="badge green">${esc(primary.badge||'Source')}</span><h3>${esc(primary.short||primary.title||'Primary source')}</h3><p><b>Official anchor</b><br>${esc(g.anchor||'—')}</p><p><b>Practice block</b><br>${esc(g.officialPractice||'—')}</p><button class="pill-btn source-progress-btn ${pr.official?'source-done':''}" data-source-progress="official" data-topic="${t.id}">${pr.official?'✓ Official block reviewed':'Mark official block done'}</button></article><article class="source-anchor-card supplement"><span class="badge">Cross-source</span><h3>Extra repetitions</h3><p><b>Supplement</b><br>${esc(g.supp||'Use Atlas Drill Engine for extra original reps.')}</p><p><b>How to use it</b><br>${esc(g.practice||'Learn, retrieve, then calibrate with official material.')}</p><button class="pill-btn source-progress-btn ${pr.supp?'source-done':''}" data-source-progress="supp" data-topic="${t.id}">${pr.supp?'✓ Supplemental reps reviewed':'Mark supplement reps done'}</button></article></div><div class="source-integrity-note"><b>Practice rule</b><span>Solve before reading explanations. A lucky guess is still a review event. Use the <button class="text-link" data-route="sourcebook">Sourcebook & Practice Map</button> to see which resources to preserve for later mixed/full-test calibration.</span></div></section>`;
+}
+
 function lessonTimeRange(t){
   const raw=[...(t.sections||[]).flatMap(s=>[s[0],s[1]]),...deepPoints(t)].join(' ');
   const words=raw.trim()?raw.trim().split(/\s+/).length:0;
@@ -1084,6 +1131,7 @@ function renderLesson(t){
     ${t.sections.map((s,i)=>`<section class="lesson-section"><h2>${esc(s[0])}</h2>${paragraphize(s[1])}${i===0?topicCallout(t):''}</section>`).join('')}
     ${renderDeepDive(t)}
     ${renderTopicToolkit(t)}
+    ${renderSourceSynthesis(t)}
     ${attackSequence(t)}
     ${renderTopicExamples(t)}
     ${renderTopicTraps(t)}
@@ -1170,11 +1218,30 @@ function renderDiagnosticResult(){const r=state.diag;return `<div class="page"><
 let drillState={module:'quant',kind:'mixed',q:null,answered:false,correct:0,total:0};
 function newDrillQuestion(){drillState.q=drillState.module==='quant'?genQuant(drillState.kind):genVerbal(drillState.kind);drillState.answered=false}
 function renderDrill(){if(!drillState.q)newDrillQuestion();const q=drillState.q;return `<div class="page"><header class="route-header"><div><span class="eyebrow">Original practice engine</span><h1>Drill lab</h1><p>Generate fresh micro-problems for retrieval and speed. These are original training items, not copied ETS questions. Use official material for final calibration.</p></div><div class="route-stamp"><div><b>${drillState.correct}/${drillState.total}</b><small>session<br>accuracy</small></div></div></header><div class="drill-toolbar"><div class="field"><label>Track</label><select id="drillModule"><option value="quant" ${drillState.module==='quant'?'selected':''}>Quantitative</option><option value="verbal" ${drillState.module==='verbal'?'selected':''}>Verbal</option></select></div><div class="field"><label>Question family</label><select id="drillKind">${drillKinds().map(x=>`<option value="${x[0]}" ${drillState.kind===x[0]?'selected':''}>${x[1]}</option>`).join('')}</select></div><button id="newDrill" class="pill-btn">New question</button></div><section class="card drill-stage"><span class="badge ${drillState.module==='quant'?'red':'blue'}">${q.label}</span><h2 style="font-family:var(--serif);font-size:32px;line-height:1.3">${q.text}</h2>${q.choices?`<div class="diag-options">${q.choices.map((o,i)=>`<button class="diag-option drill-choice" data-i="${i}">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}</div>`:`<input id="drillNumeric" class="numeric-entry" inputmode="decimal" placeholder="Enter answer"><div class="answer-row"><button id="checkNumeric" class="primary-btn">Check answer</button></div>`}<div id="drillFeedback"></div></section></div>`}
-function drillKinds(){return drillState.module==='quant'?[['mixed','Mixed Quant'],['percent','Percent & percent change'],['ratio','Ratio & proportion'],['algebra','Linear algebra'],['remainder','Remainders'],['average','Averages & statistics'],['probability','Probability'],['geometry','Geometry'],['exponents','Exponents & roots'],['divisibility','Divisibility / GCF'],['inequality','Inequalities'],['functions','Functions'],['coordinate','Coordinate geometry'],['counting','Counting'],['sets','Sets / Venn'],['data','Data interpretation'],['qc','Quantitative Comparison']]:[['mixed','Mixed Verbal'],['tc','Text Completion'],['se','Sentence Equivalence'],['logic','Sentence logic'],['vocab','Vocabulary'],['rc','Reading Comprehension'],['inference','Inference'],['argument','Argument reasoning'],['tone','Tone & stance']];}
+function drillKinds(){return drillState.module==='quant'?[['mixed','Mixed Quant'],['decimals','Decimals & rounding'],['percent','Percent & percent change'],['interest','Interest & growth'],['ratio','Ratio & proportion'],['algebra','Linear algebra'],['remainder','Remainders'],['average','Averages & statistics'],['probability','Probability'],['geometry','Geometry'],['exponents','Exponents & roots'],['divisibility','Divisibility / GCF'],['inequality','Inequalities'],['functions','Functions'],['functiongraph','Function graphs'],['answerchoices','Backsolve / smart numbers'],['coordinate','Coordinate geometry'],['counting','Counting'],['sets','Sets / Venn'],['data','Data interpretation'],['qc','Quantitative Comparison']]:[['mixed','Mixed Verbal'],['tc','Text Completion'],['se','Sentence Equivalence'],['logic','Sentence logic'],['vocab','Vocabulary'],['rc','Reading Comprehension'],['inference','Inference'],['argument','Argument reasoning'],['tone','Tone & stance']];}
 function genQuant(kind){
-  if(kind==='mixed')kind=shuffle(['percent','ratio','algebra','remainder','average','probability','geometry','exponents','divisibility','inequality','functions','coordinate','counting','sets','data','qc'])[0];
+  if(kind==='mixed')kind=shuffle(['decimals','percent','interest','ratio','algebra','remainder','average','probability','geometry','exponents','divisibility','inequality','functions','functiongraph','answerchoices','coordinate','counting','sets','data','qc'])[0];
   const ri=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
   const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a};
+  if(kind==='decimals'){
+    const mode=ri(0,2);
+    if(mode===0){const n=ri(1001,9999),d=10**ri(2,4),x=n/d,ans=+(x*100).toFixed(4);return {label:'Decimal → percent',text:`Express ${x} as a percent. Enter the numerical percent value.`,answer:ans,tolerance:.001,explain:`Multiply by 100: ${x}×100=${ans}%.`}}
+    if(mode===1){const a=ri(1,9),b=ri(1,9),x=+(a/100+b/1000).toFixed(3),ans=+x.toFixed(2);return {label:'Rounding',text:`Round ${x} to the nearest hundredth.`,answer:ans,tolerance:.0001,explain:`Look at the thousandths digit and round the hundredths place once.`}}
+    const a=ri(12,98)/10,b=ri(12,98)/100,ans=+(a+b).toFixed(2);return {label:'Decimal arithmetic',text:`Evaluate ${a} + ${b}.`,answer:ans,tolerance:.0001,explain:`Align decimal points: ${a}+${b}=${ans}.`};
+  }
+  if(kind==='interest'){
+    const P=ri(5,30)*100,r=shuffle([2,3,4,5,6,8])[0]/100,t=ri(1,4),mode=ri(0,1);
+    if(mode===0){const ans=+(P*(1+r*t)).toFixed(2);return {label:'Simple interest',text:`$${P} is invested at ${r*100}% simple annual interest for ${t} years. What is the final value?`,answer:ans,tolerance:.01,explain:`V=P(1+rt)=${P}(1+${r}×${t})=${ans}.`}}
+    const ans=+(P*(1+r)**t).toFixed(2);return {label:'Compound interest',text:`$${P} is invested at ${r*100}% annual interest compounded annually for ${t} years. What is the final value? Round to the nearest cent.`,answer:ans,tolerance:.02,explain:`V=P(1+r)^t=${P}(1+${r})^${t}=${ans}.`};
+  }
+  if(kind==='functiongraph'){
+    const mode=ri(0,1);
+    if(mode===0){const x=ri(-4,5),y=ri(-8,10);return {label:'Function graph',text:`The graphs y=f(x) and y=g(x) intersect at the point (${x}, ${y}). Which statement must be true?`,choices:[`f(${x})=0`,`g(${y})=${x}`,`f(${x})=g(${x})=${y}`,`f(${y})=g(${y})=${x}`],answer:2,explain:`At an intersection, both functions have the same output y at the same input x.`}}
+    const h=ri(1,6);return {label:'Graph transformation',text:`Relative to y=f(x), the graph y=f(x−${h}) is shifted:`,choices:[`${h} units left`,`${h} units right`,`${h} units up`,`${h} units down`],answer:1,explain:`Replacing x by x−h shifts the graph right by h.`};
+  }
+  if(kind==='answerchoices'){
+    const x=shuffle([2,3,4,5,6])[0],a=ri(2,5),b=ri(1,9),target=a*x+b;const opts=shuffle([x,x+1,x-1,x+2]);return {label:'Backsolving',text:`Which answer choice satisfies ${a}x + ${b} = ${target}?`,choices:opts.map(String),answer:opts.indexOf(x),explain:`Substitute choices or solve directly: x=(${target}−${b})/${a}=${x}. The method matters: backsolving is useful when verification is cheaper than derivation.`};
+  }
   if(kind==='percent'){
     const mode=ri(0,2),p=shuffle([10,15,20,25,30,40])[0],base=ri(4,20)*20;
     if(mode===0){const ans=base*(1+p/100);return {label:'Percent',text:`A value of ${base} is increased by ${p}%. What is the new value?`,answer:ans,explain:`Multiply by 1+${p}/100 = ${1+p/100}. ${base} × ${1+p/100} = ${ans}.`}}
@@ -1466,20 +1533,50 @@ function renderMocks(){
 }
 function mockRow(r,i){return `<div class="mock-row"><span><b>${esc(r.name)}</b></span><span>${r.q||'—'}</span><span>${r.v||'—'}</span><span>${r.a??'—'}</span><span>${r.date?fmtDate(r.date):'—'}</span><button class="pill-btn remove-mock" data-i="${i}">×</button></div>`}
 
+function renderSourceChecklist(){
+ const G=window.GRE_SOURCE_GUIDE;if(!G)return '';
+ const blocks=G.officialChecklist||[];
+ const rows=blocks.reduce((n,b)=>n+b.items.length,0),ok=blocks.reduce((n,b)=>n+b.items.filter(x=>x[1].split(/\s+/).filter(Boolean).every(id=>topicMap[id])).length,0);
+ return `<div class="section-title source-audit-title"><div><span class="eyebrow">2025 ETS book audit</span><h2>Exact source crosswalk</h2></div><p>${ok}/${rows} source lines have explicit chapter homes. This is finer-grained than the broad GRE content categories above.</p></div><div class="source-checklist-grid">${blocks.map(b=>`<section class="card source-checklist-card"><div class="coverage-head"><div><span class="eyebrow">Source checklist</span><h3>${esc(b.group)}</h3></div><span class="badge green">${b.items.length} mapped</span></div><div class="coverage-list">${b.items.map(([label,ids])=>{const list=ids.split(/\s+/).filter(Boolean);const pass=list.every(id=>topicMap[id]);return `<div class="coverage-row"><span class="coverage-check">${pass?'✓':'!'}</span><div><strong>${esc(label)}</strong><div class="coverage-links">${list.map(id=>`<button class="text-link" data-route="${id}">${esc(topicMap[id]?.title||id)}</button>`).join(' · ')}</div></div></div>`}).join('')}</div></section>`).join('')}</div>`;
+}
+
+function renderSourcebook(){
+ const G=window.GRE_SOURCE_GUIDE||{},cat=G.catalog||{},sources=Object.entries(cat),assigned=TOPICS.filter(t=>G.topicSources?.[t.id]).length;
+ const modules=['quant','verbal','writing','strategy'];
+ const sourceCard=([key,s])=>`<article class="card source-book-card ${s.current?'current':'legacy'}"><div class="source-book-top"><span class="badge ${s.current?'green':''}">${esc(s.badge)}</span><span class="source-kind">${esc(s.kind)}</span></div><h3>${esc(s.title)}</h3><p class="source-edition">${esc(s.edition)}</p><div class="source-book-rule"><b>Use it for</b><p>${esc(s.use)}</p></div><div class="source-book-rule protect"><b>Protect against</b><p>${esc(s.protect)}</p></div></article>`;
+ return `<div class="page sourcebook-page"><header class="route-header"><div><span class="eyebrow">Five-source consolidation · no question-bank copying</span><h1>Sourcebook & Practice Map</h1><p>This is the operating manual for the material you supplied. It tells you which source is authoritative, which one is for repetition, which legacy material still transfers, and exactly where every GRE Atlas chapter plugs into the books.</p><div class="pill-row"><span class="badge green">${sources.length} source families</span><span class="badge green">${assigned}/${TOPICS.length} chapters source-mapped</span><span class="badge">copyright-safe synthesis</span></div></div><div class="route-stamp"><div><b>${assigned}</b><small>chapter<br>assignments</small></div></div></header>
+ <div class="callout"><b>Core rule: fidelity rises as you improve</b>Learn and retrieve first. Use high-volume drills to stabilize a weakness. Spend current official ETS questions when you are ready to calibrate wording, traps and difficulty. Save mixed sets and full simulations until they can measure something meaningful.</div>
+ <div class="section-title"><div><span class="eyebrow">The library</span><h2>Each book has a different job</h2></div><p>No single book should dictate the entire plan.</p></div><div class="source-book-grid">${sources.map(sourceCard).join('')}</div>
+ <div class="section-title"><div><span class="eyebrow">The sequence</span><h2>Six-layer practice ladder</h2></div><p>Do not confuse question volume with learning.</p></div><div class="practice-ladder-grid">${[
+  ['01','Learn','Read the Atlas chapter, deep notes, tricks/formulas and worked reasoning. Build the mental model before speed.'],
+  ['02','Retrieve','Close the notes. Do the six-rep mastery workout and the cold checkpoint. Explain restrictions and traps aloud.'],
+  ['03','Targeted volume','Use Atlas Drill Lab and the mapped Manhattan chapter for narrow repetitions. Stop when the error pattern is understood—not when you are merely tired.'],
+  ['04','Official calibration','Use the mapped current ETS content/type set. Solve cold, then study explanations and compare your reasoning with ETS.'],
+  ['05','Mixed timed transfer','Once a cluster is stable, use official mixed sets under section-like timing. Log misses, lucky guesses and slow wins.'],
+  ['06','Full simulation','Use POWERPREP and the Official Guide full tests later. Replicate conditions and spend substantial time reviewing before taking another.']
+ ].map(x=>`<article class="ladder-card"><span>${x[0]}</span><h3>${x[1]}</h3><p>${x[2]}</p></article>`).join('')}</div>
+ <div class="section-title"><div><span class="eyebrow">AWA task compliance</span><h2>Know the Issue instruction families</h2></div><p>The topic changes, but the instruction determines what your essay must actually do.</p></div><div class="grid grid-3">${(G.awaInstructionTypes||[]).map((r,i)=>`<article class="card"><span class="eyebrow">Instruction ${i+1}</span><h3>${esc(r[0])}</h3><p>${esc(r[1])}</p></article>`).join('')}</div>
+ <div class="section-title"><div><span class="eyebrow">Legacy filter</span><h2>What to do with the GRE Big Book</h2></div><p>It is valuable precisely when you use the transferable parts and refuse to learn obsolete formats.</p></div><section class="card legacy-table-wrap"><table class="legacy-filter-table"><thead><tr><th>Big Book material</th><th>Verdict</th><th>How to use it</th></tr></thead><tbody>${(G.legacyFilter||[]).map(r=>`<tr><td><b>${esc(r[0])}</b></td><td><span class="badge ${r[1]==='USE'?'green':r[1].startsWith('SKIP')?'red':''}">${esc(r[1])}</span></td><td>${esc(r[2])}</td></tr>`).join('')}</tbody></table></section>
+ <div class="section-title"><div><span class="eyebrow">High-volume map</span><h2>Manhattan 5 lb. → Atlas clusters</h2></div><p>Use these chapters as repetitions after the corresponding concepts are understood.</p></div><div class="grid grid-2">${(G.manhattanMap||[]).map(r=>`<article class="card"><span class="eyebrow">${esc(r[0])}</span><h3>${esc(r[1])}</h3></article>`).join('')}</div>
+ ${renderSourceChecklist()}
+ <div class="section-title"><div><span class="eyebrow">Every chapter</span><h2>Source assignment index</h2></div><p>Open a chapter directly from the table; its lesson includes the same assignment in context.</p></div><div class="source-index-groups">${modules.map(m=>`<section class="card source-index-group"><div class="coverage-head"><div><span class="eyebrow">${esc(MODULES[m].name)}</span><h3>${byModule(m).length} chapters</h3></div></div><div class="source-index-list">${byModule(m).map(t=>{const g=G.topicSources?.[t.id],p=g?cat[g.primary]:null,pr=state.sourceProgress?.[t.id]||{},n=(pr.official?1:0)+(pr.supp?1:0);return `<div class="source-index-row"><button class="text-link source-topic-link" data-route="${t.id}">${esc(t.title)}</button><div><div class="source-chip-row"><span class="source-chip">${esc(p?.short||'Unmapped')}</span><span class="source-chip ${n===2?'complete':''}">${n}/2 practice</span></div><small>${esc(g?.anchor||'No source anchor')}</small></div></div>`}).join('')}</div></section>`).join('')}</div>
+ <div class="source-integrity-note big"><b>Copyright & learning design</b><span>The site does not republish the copyrighted official or Manhattan question banks. It consolidates their tested skills, strategies, source locations and study sequence, then uses original Atlas teaching/drills. Use your lawful copies for the authentic questions and ETS explanations.</span></div></div>`;
+}
+
 function renderCoverage(){
  const groups=[
   {k:'Quant · Arithmetic',src:'ETS Quantitative Reasoning',items:[
    ['Integer properties: divisibility, factors, primes, remainders, odd/even',['q-integers','q-factors','q-remainders','q-integer-constraints']],
    ['Arithmetic operations, exponents and roots',['q-fractions','q-exponents']],
-   ['Estimation, percent, ratio, rate, absolute value, number line, decimals, sequences',['q-estimation','q-percent-growth','q-ratio','q-rates','q-work-combined','q-absolute','q-number-line','q-fractions','q-sequences']],
+   ['Estimation, percent, ratio, rate, absolute value, number line, decimals, sequences',['q-estimation','q-percent-growth','q-ratio','q-rates','q-work-combined','q-absolute','q-number-line','q-decimals','q-sequences']],
    ['Units, scaling, mixtures and applied arithmetic',['q-units','q-scaling','q-mixtures']]
   ]},
   {k:'Quant · Algebra',src:'ETS Quantitative Reasoning',items:[
    ['Expressions, factoring and simplifying',['q-expressions']],
-   ['Relations, functions, equations and inequalities',['q-functions','q-linear','q-inequalities']],
+   ['Relations, functions, equations and inequalities',['q-functions','q-function-graphs','q-linear','q-inequalities']],
    ['Linear/quadratic equations and inequalities; simultaneous systems',['q-linear','q-quadratics','q-systems']],
-   ['Word-problem modeling',['q-translation']],
-   ['Coordinate geometry, graphs, slopes and intercepts',['q-coordinate']]
+   ['Word-problem modeling, rates/work/mixtures and interest applications',['q-translation','q-rates','q-work-combined','q-mixtures','q-interest']],
+   ['Coordinate geometry, graphs of functions, slopes and intercepts',['q-coordinate','q-function-graphs']]
   ]},
   {k:'Quant · Geometry',src:'ETS Quantitative Reasoning',items:[
    ['Parallel/perpendicular lines and angle relationships',['q-angles']],
@@ -1500,7 +1597,7 @@ function renderCoverage(){
    ['Quantitative Comparison',['q-qc','q-qc-adversarial']],
    ['Select-one, select-one-or-more, Numeric Entry and Data Interpretation sets',['q-formats','q-di-hard']],
    ['Mathematical conventions and what figures may/may not be assumed to scale',['q-conventions']],
-   ['Calculator discipline and section execution',['s-calculator','s-timing']]
+   ['Calculator discipline, answer-choice methods and official strategy repertoire',['s-calculator','q-answer-choice-methods','q-strategy-repertoire','s-timing']]
   ]},
   {k:'Verbal · Reading Comprehension',src:'ETS Verbal Reasoning',items:[
    ['Meaning of words, sentences, paragraphs and whole passages',['v-rc-map','v-syntax-spine','v-reference']],
@@ -1542,13 +1639,15 @@ function renderCoverage(){
    ['Scratchwork and calculator use',['s-scratch','s-calculator']],
    ['Mock-test analysis and official calibration',['s-mocks','s-final-calibration']],
    ['170-level reliability and mastery gates',['s-error-budget','s-masterygates']],
+   ['Source practice sequencing and preservation',['s-source-practice-system']],
    ['Test day and final week',['s-testday']]
   ]}
  ];
  const total=groups.reduce((n,g)=>n+g.items.length,0),mapped=groups.reduce((n,g)=>n+g.items.filter(x=>x[1].every(id=>topicMap[id])).length,0);
- return `<div class="page"><header class="route-header"><div><span class="eyebrow">Official-scope audit · Complete+ Edition</span><h1>Master Syllabus</h1><p>This page exists for one reason: you should never have to wonder whether a GRE skill vanished between broad chapter titles. It maps the current ETS content/skill descriptions to specific GRE Atlas chapters. A green map means the skill has an explicit home; it does <em>not</em> mean you personally have mastered it yet.</p></div><div class="route-stamp"><div><b>${mapped}/${total}</b><small>scope lines<br>mapped</small></div></div></header>
+ return `<div class="page"><header class="route-header"><div><span class="eyebrow">Official-scope audit · Source-Integrated Edition</span><h1>Master Syllabus</h1><p>This page exists for one reason: you should never have to wonder whether a GRE skill vanished between broad chapter titles. It maps the current ETS content/skill descriptions to specific GRE Atlas chapters. A green map means the skill has an explicit home; it does <em>not</em> mean you personally have mastered it yet.</p></div><div class="route-stamp"><div><b>${mapped}/${total}</b><small>scope lines<br>mapped</small></div></div></header>
  <div class="callout"><b>Important boundary</b>ETS says Quant is high-school mathematics/statistics at roughly no higher than a second algebra course. Trigonometry, calculus, other higher mathematics, inferential statistics, and formal geometric proof construction are not tested. GRE Atlas therefore does not waste your study time pretending those are hidden requirements.</div>
  <div class="coverage-grid">${groups.map(g=>`<section class="card coverage-card"><div class="coverage-head"><div><span class="eyebrow">${g.src}</span><h3>${g.k}</h3></div><span class="badge green">${g.items.length} mapped</span></div><div class="coverage-list">${g.items.map(([label,ids])=>`<div class="coverage-row"><span class="coverage-check">✓</span><div><strong>${label}</strong><div class="coverage-links">${ids.map(id=>`<button class="text-link" data-route="${id}">${esc(topicMap[id]?.title||id)}</button>`).join(' · ')}</div></div></div>`).join('')}</div></section>`).join('')}</div>
+ ${renderSourceChecklist()}
  <div class="section-title"><div><span class="eyebrow">What “complete” means here</span><h2>Coverage ≠ mastery</h2></div></div><div class="grid grid-3"><div class="card"><h3>1 · Learn</h3><p>Understand the concept, strategy, edge cases, and why common shortcuts work.</p></div><div class="card"><h3>2 · Retrieve</h3><p>Explain it without notes and solve representative items without being cued.</p></div><div class="card"><h3>3 · Transfer</h3><p>Recognize it inside mixed, timed, unfamiliar-looking GRE questions.</p></div></div>
  <div class="source-note" style="margin-top:20px">Audit basis: current ETS GRE General Test content pages for Quantitative Reasoning, Verbal Reasoning, Analytical Writing, question formats, mathematical conventions, and test strategy. Use Official Resources for the source-of-truth links and re-check ETS before test day.</div></div>`;
 }
@@ -1565,6 +1664,7 @@ function renderResources(){
  return `<div class="page"><header class="route-header"><div><span class="eyebrow">Source of truth</span><h1>Official resources</h1><p>GRE Atlas teaches and organizes; ETS defines the exam. Use these links for current policy, official sample material, POWERPREP, and test-day details.</p></div><div class="route-stamp"><div><b>ETS</b><small>verify<br>here</small></div></div></header><div class="grid grid-3">${cards.map(c=>`<div class="card resource-card"><span class="badge green">Official ETS</span><h3>${c[0]}</h3><p>${c[1]}</p><div class="meta"><a href="${c[2]}" target="_blank" rel="noopener">Open official page ↗</a></div></div>`).join('')}</div>
  <div class="section-title"><div><span class="eyebrow">Current format snapshot</span><h2>What this site is built for</h2></div></div><div class="grid grid-3"><div class="card"><h3>Analytical Writing</h3><p>1 section · one Analyze an Issue task · 30 minutes · always first.</p></div><div class="card"><h3>Verbal</h3><p>2 sections · 12 questions in 18 minutes, then 15 in 23 minutes · section-level adaptive.</p></div><div class="card"><h3>Quant</h3><p>2 sections · 12 questions in 21 minutes, then 15 in 26 minutes · section-level adaptive · on-screen calculator.</p></div></div>
  <div class="source-note" style="margin-top:20px">Test rules can change. Before scheduling and again shortly before test day, re-check ETS for registration, ID, at-home/test-center procedures, and any format updates.</div>
+ <div class="section-title"><div><span class="eyebrow">Your study library</span><h2>Books are now mapped into the curriculum</h2></div></div><div class="grid grid-3"><div class="card resource-card"><span class="badge green">Official ETS · 2025</span><h3>Official Guide, Fourth Edition</h3><p>Current structure, AWA, Verbal/Quant overview, practice by difficulty, mixed sets, Math Review, and two full tests. Save the full tests for later calibration.</p><button class="pill-btn" data-route="sourcebook">See source map →</button></div><div class="card resource-card"><span class="badge green">Official ETS · 2025</span><h3>Official Quant + Verbal Practice, Third Edition</h3><p>150 authentic questions in each book, plus explanations and targeted practice. Every Atlas chapter now points to its relevant official anchor.</p><button class="pill-btn" data-route="sourcebook">Open assignments →</button></div><div class="card resource-card"><span class="badge">Supplement + legacy</span><h3>Manhattan 5 lb + GRE Big Book</h3><p>Use Manhattan for high-volume skill drilling and the Big Book through a legacy filter. Current ETS material always wins on format, timing, difficulty calibration and conventions.</p><button class="pill-btn" data-route="sourcebook">Open legacy filter →</button></div></div>
  <div class="section-title"><div><span class="eyebrow">Vocabulary methodology</span><h2>Why the vocabulary system is layered</h2></div></div><div class="grid grid-2"><div class="card resource-card"><span class="badge blue">2026 prep research</span><h3>High-frequency first</h3><p>Magoosh’s 2026 review recommends a focused ~1,000-word high-frequency core rather than brute-forcing sprawling 3,500+ lists. GRE Atlas follows that principle, then adds a Deep Vault as optional insurance.</p><div class="meta"><a href="https://magoosh.com/gre/best-and-worst-gre-word-lists/" target="_blank" rel="noopener">Read methodology ↗</a></div></div><div class="card resource-card"><span class="badge">Public data</span><h3>Word coverage + open definitions</h3><p>The supplemental study words and Deep Vault are seeded from a public cross-list GRE collection. Definitions for supplemental words are fetched on demand from Open Dictionary’s Wiktionary-derived JSON rather than copying commercial flashcard definitions.</p><div class="meta"><a href="https://github.com/Xatta-Trone/gre-words-collection" target="_blank" rel="noopener">Word-list collection ↗</a> &nbsp; <a href="https://github.com/mhollingshead/open-dictionary" target="_blank" rel="noopener">Open Dictionary ↗</a></div></div></div></div>`
 }
 
@@ -1579,6 +1679,7 @@ function bindPage(route){
   if($('#topicNote')) $('#topicNote').addEventListener('input',e=>{state.notes[e.target.dataset.topic]=e.target.value;saveState()});
   if($('#focusLesson')) $('#focusLesson').onclick=openFocus;
   if($('#focusToday')) $('#focusToday').onclick=openFocus;
+  $$('.source-progress-btn').forEach(btn=>btn.onclick=()=>{const id=btn.dataset.topic,key=btn.dataset.sourceProgress;state.sourceProgress=state.sourceProgress||{};state.sourceProgress[id]=state.sourceProgress[id]||{};state.sourceProgress[id][key]=!state.sourceProgress[id][key];saveState();toast(state.sourceProgress[id][key]?'Source practice marked complete':'Source practice reopened');render()});
   $$('.quiz-card').forEach(card=>bindQuiz(card));
   if(route==='roadmap')bindRoadmap();
   if(route==='diagnostic')bindDiagnostic();
@@ -1694,6 +1795,7 @@ function buildSearchIndex(){return [
   ...TOPICS.map(t=>({title:t.title,sub:`${MODULES[t.module].name} · ${t.summary}`,route:t.id,terms:`${t.title} ${t.summary} ${t.sections.map(s=>s.join(' ')).join(' ')} ${deepPoints(t).join(' ')} ${topicToolkit(t).tricks.join(' ')} ${topicToolkit(t).formulas.join(' ')}`})),
   {title:'Vocabulary Mastery System',sub:'SRS, high-frequency lists, semantic groups, roots, secondary meanings',route:'vocab',terms:'vocabulary words synonyms SRS flashcards Magoosh GregMAT roots polysemy semantic groups'},
   {title:'Master Syllabus',sub:'Official ETS coverage audit mapped to GRE Atlas chapters',route:'coverage',terms:'coverage syllabus audit ETS quant verbal writing all topics'},
+  {title:'Sourcebook & Practice Map',sub:'Official Guide, Official Quant/Verbal, Manhattan 5 lb, Big Book legacy filter, and source assignments for every chapter',route:'sourcebook',terms:'books official guide quant verbal Manhattan 5 lb big book practice source map legacy assignments'},
   {title:'Formula Atlas',sub:'Quant formulas and relationships',route:'formula',terms:'formula geometry algebra probability statistics'},
   {title:'Error Log',sub:'Classify and repair misses',route:'errors',terms:'wrong answers mistakes review'},
   {title:'Essay Studio',sub:'30-minute Analyze an Issue practice',route:'essay',terms:'writing analytical issue essay AWA'},
